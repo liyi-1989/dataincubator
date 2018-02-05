@@ -1,0 +1,60 @@
+---
+title: "problem 3"
+author: "Yi Li"
+date: "February 5, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+```{r}
+library(quantmod)  # also loads xts and TTR
+
+# Fetch all Symbols & store only the tickers to retrieve the data
+Symbols <- stockSymbols()
+Symbols <- Symbols[,1]
+```
+
+```{r}
+symbols=Symbols[1:100]
+dataset<- xts() # Only run once
+# cool progress bar to see the % of completion
+n <- length(symbols)
+pb <- txtProgressBar(min = 0, max = n, style=3)
+# Actual loop: 
+for(i in 1:length(symbols)) {
+  symbols[i]-> symbol
+# specify the "from" date to desired start date
+  tryit <- try(getSymbols(symbol,from="2014-01-01", src='yahoo'))
+  if(inherits(tryit, "try-error")){
+    i <- i+1
+  } else {
+  # specify the "from" date to desired start date
+  data <- getSymbols(symbol, from="2014-01-01", src='yahoo')
+  dataset <- merge(dataset, Ad(get(symbols[i])))
+  rm(symbol)
+  }
+  setTxtProgressBar(pb, i)
+}
+```
+
+
+```{r}
+n=nrow(dataset)
+plot(1:n,scale(dataset[,1]),type="l",xlab = "time",ylab="price",col="blue",ylim=c(-3,3),title="Example of 3 normalized stock prices")
+lines(1:n,scale(dataset[,2]),col="orange")
+lines(1:n,scale(dataset[,3]),col="green")
+
+```
+
+```{r}
+library(fields)
+image.plot(cor(dataset))
+```
+
+
+

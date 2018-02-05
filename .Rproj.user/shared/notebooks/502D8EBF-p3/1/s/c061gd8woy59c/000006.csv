@@ -1,0 +1,2 @@
+"0","n=nrow(dataset)"
+"0","plot(1:n,diff(dataset[,1]),type=""l"",xlab = ""time"",ylab=""price"",col=""blue"")"

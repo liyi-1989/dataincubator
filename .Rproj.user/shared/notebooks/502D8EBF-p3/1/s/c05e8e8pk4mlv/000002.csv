@@ -1,0 +1,10 @@
+"0","library(quantmod)  # also loads xts and TTR"
+"0","# Fetch all Symbols & store only the tickers to retrieve the data"
+"0","Symbols <- stockSymbols()"
+"2","Fetching AMEX symbols...
+"
+"2","Fetching NASDAQ symbols...
+"
+"2","Fetching NYSE symbols...
+"
+"0","Symbols <- Symbols[,1]"

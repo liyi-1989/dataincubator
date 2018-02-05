@@ -1,0 +1,32 @@
+"0","library(quantmod)  # also loads xts and TTR"
+"2","package ‘quantmod’ was built under R version 3.4.3"
+"2","Loading required package: xts
+"
+"2","package ‘xts’ was built under R version 3.4.3"
+"2","Loading required package: zoo
+"
+"2","package ‘zoo’ was built under R version 3.4.3"
+"2","
+Attaching package: ‘zoo’
+
+"
+"2","The following objects are masked from ‘package:base’:
+
+    as.Date, as.Date.numeric
+
+"
+"2","Loading required package: TTR
+"
+"2","package ‘TTR’ was built under R version 3.4.3"
+"2","Version 0.4-0 included new data defaults. See ?getSymbols.
+Learn from a quantmod author: https://www.datacamp.com/courses/importing-and-managing-financial-data-in-r
+"
+"0","# Fetch all Symbols & store only the tickers to retrieve the data"
+"0","symbols <- stockSymbols()"
+"2","Fetching AMEX symbols...
+"
+"2","Fetching NASDAQ symbols...
+"
+"2","Fetching NYSE symbols...
+"
+"0","symbols <- symbols[,1]"
